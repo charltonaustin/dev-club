@@ -1,4 +1,6 @@
 class TurnTicket
+  attr_reader :turn_number
+  
   def initialize turn_number
     @turn_number = turn_number
   end
@@ -16,6 +18,7 @@ class TurnNumberSequence
 end
 
 class TicketDispenser
+
   def get_turn_ticket
     new_turn_number = TurnNumberSequence.next_turn_number
     new_turn_ticket = TurnTicket.new(new_turn_number)
