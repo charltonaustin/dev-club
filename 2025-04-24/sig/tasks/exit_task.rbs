@@ -1,0 +1,12 @@
+# TypeProf 0.30.1
+
+# lib/tasks/exit_task.rb
+class ExitTask
+  @tasks: Array[Task]
+
+  attr_accessor description: String
+  attr_accessor key: Integer
+
+  def initialize: (Array[Task], Integer) -> Integer
+  def do: -> bot
+end

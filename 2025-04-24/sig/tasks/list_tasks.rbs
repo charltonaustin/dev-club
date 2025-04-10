@@ -1,0 +1,13 @@
+# TypeProf 0.30.1
+
+# lib/tasks/list_tasks.rb
+class ListTasks
+  @tasks: Array[Task]
+
+  attr_accessor description: String
+  attr_accessor key: Integer
+
+  def initialize: (Array[Task], Integer) -> Integer
+  def do: -> Array[Task]
+  def list_tasks: -> nil
+end

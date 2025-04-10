@@ -1,0 +1,14 @@
+# TypeProf 0.30.1
+
+# lib/tasks/task.rb
+class Task
+  @completed: bool
+  @description: string
+  @history: Array[string]
+
+  attr_accessor completed: bool
+  attr_accessor description: string
+  attr_accessor history: Array[string]
+
+  def initialize: (string, bool, Array[string]) -> Array[string]
+end

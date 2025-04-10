@@ -1,0 +1,9 @@
+# TypeProf 0.30.1
+
+# lib/tasks/shared_behavior/print_tasks.rb
+class PrintTasks
+  @tasks: Array[Task]
+
+  def initialize: (Array[Task]) -> Array[Task]
+  def do: -> void
+end

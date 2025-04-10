@@ -1,0 +1,7 @@
+# TypeProf 0.30.1
+
+# lib/tasks/shared_behavior/task_index_getter.rb
+class TaskIndexGetter
+  def initialize: (untyped) -> untyped
+  def get_index: -> Integer
+end

@@ -1,0 +1,13 @@
+# TypeProf 0.30.1
+
+# lib/tasks/revert_task.rb
+class RevertTask
+  @tasks: Array[Task]
+
+  attr_accessor description: String
+  attr_accessor key: Integer
+
+  def initialize: (Array[Task], Integer) -> String
+  def do: -> Array[Task]
+  def revert_task: (Integer, Integer) -> nil
+end

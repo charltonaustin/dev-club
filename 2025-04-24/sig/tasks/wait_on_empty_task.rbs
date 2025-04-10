@@ -1,0 +1,15 @@
+# TypeProf 0.30.1
+
+# lib/tasks/wait_on_empty_task.rb
+class WaitOnEmptyTask
+  @delegator: EditTask | ViewTaskHistory | RevertTask | DefaultTask
+  @key: Integer
+  @tasks: Array[Task]
+
+  attr_accessor key: Integer
+
+  def initialize: (Array[Task], Integer) -> DefaultTask
+  def set_delegator: (singleton(::EditTask) | singleton(::ViewTaskHistory) | singleton(::RevertTask)) -> WaitOnEmptyTask
+  def description: -> string
+  def do: -> Array[Task]
+end
