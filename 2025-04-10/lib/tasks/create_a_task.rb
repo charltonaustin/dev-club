@@ -9,7 +9,7 @@ class CreateATask
   include Action
 
 
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: Tasks, key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
@@ -25,8 +25,7 @@ class CreateATask
 
   sig { params(description: String).returns(NilClass) }
   def add_task(description)
-    @tasks << Task.new(description, false, [description])
-    puts "Task added: #{description}"
+    Tasks.create_a_task(description, false, [description])
   end
   sig { override.returns(String) }
   def description

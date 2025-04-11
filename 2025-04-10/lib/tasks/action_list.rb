@@ -11,7 +11,7 @@ class ActionList
 
   sig { returns(T::Array[Action]) }
   def get_actions
-    actions = T.let([CreateATask, ListTasks, ExitTask].map.with_index do |action, i|
+    actions = T.let([CreateATask, ListTasks, ExitTask, DeleteATask].map.with_index do |action, i|
       action.new(@tasks, i + 1)
     end, T::Array[Action])
 

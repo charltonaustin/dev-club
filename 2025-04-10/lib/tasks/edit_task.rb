@@ -22,13 +22,12 @@ class EditTask
     @tasks
   end
 
-  sig { params(task_index: T.untyped, new_description: T.untyped).returns(NilClass) }
+  sig { params(task_index: Integer, new_description: String).returns(NilClass) }
   def edit_task(task_index, new_description)
     if task_index >= 1 && task_index <= @tasks.length
       task = @tasks[task_index - 1]
-      T.must(task).history << new_description # Add the current description to history
-      T.must(task).description = new_description
-      puts "Task #{task_index} updated to: #{new_description}"
+      T.must(task).edit_task_description(new_description)
+      puts "Task #{task_index} updated to: #{T.must(task).current_description}"
     else
       puts 'Invalid task number.'
     end
