@@ -73,5 +73,55 @@ describe PolicyNumber do
 
       it { expect(subject.close_digits).to eq [[0], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8]] }
     end
+    context "with illegible digit in a different position" do
+      let(:rows) {
+        [
+          ' _  _  _  _  _  _  _  _  _ ',
+          '|  | || || || || || || || |',
+          '|_||_||_||_||_||_||_||_||_|',
+
+        ]
+      }
+
+      it { expect(subject.close_digits).to eq [[0, 6], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8]] }
+    end
+
+    context "with illegible digit in a different 1 to 7" do
+      let(:rows) {
+        [
+          '    _  _  _  _  _  _  _  _ ',
+          '  || || || || || || || || |',
+          '  ||_||_||_||_||_||_||_||_|',
+
+        ]
+      }
+
+      it { expect(subject.close_digits).to eq [[1, 7], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8]] }
+    end
+
+    context "with illegible digit in a different 7 to 1" do
+      let(:rows) {
+        [
+          ' _  _  _  _  _  _  _  _  _ ',
+          '  || || || || || || || || |',
+          '  ||_||_||_||_||_||_||_||_|',
+
+        ]
+      }
+
+      it { expect(subject.close_digits).to eq [[1, 7], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8]] }
+    end
+    context "with illegible digit in a different 8 to 0, 6, 9" do
+      let(:rows) {
+        [
+          ' _  _  _  _  _  _  _  _  _ ',
+          '|_|| || || || || || || || |',
+          '|_||_||_||_||_||_||_||_||_|',
+
+        ]
+      }
+
+      it { expect(subject.close_digits).to eq [[0, 6, 8, 9], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8], [0, 8]] }
+    end
   end
 end
