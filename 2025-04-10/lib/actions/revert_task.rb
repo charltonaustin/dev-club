@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 # typed: strict
 
-require_relative './shared_behavior/task_index_getter'
-require_relative './shared_behavior/history_viewer'
+require_relative '../tasks/shared_behavior/task_index_getter'
+require_relative '../tasks/shared_behavior/history_viewer'
 
 class RevertTask
   extend T::Sig
@@ -18,7 +18,7 @@ class RevertTask
     @key
   end
 
-  sig { params(tasks: T.untyped, key: T.untyped).void }
+  sig { params(tasks: T::Array[Task], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
@@ -35,14 +35,14 @@ class RevertTask
     @tasks
   end
 
-  sig { params(task_index: T.untyped, history_index: T.untyped).returns(NilClass) }
+  sig { params(task_index: Integer, history_index: Integer).void }
   def revert_task(task_index, history_index)
     if task_index >= 1 && task_index <= @tasks.length
       task = @tasks[task_index - 1]
-      if history_index >= 1 && history_index <= task.history.length
-        reverted_description = task.history[history_index - 1]
-        task.history << reverted_description
-        task.description = reverted_description
+      if history_index >= 1 && history_index <= T.must(task).history.length
+        reverted_description = T.must(task).history[history_index - 1]
+        T.must(task).history << T.must(reverted_description)
+        T.must(task).description = T.must(reverted_description)
         puts "Task #{task_index} reverted to version #{history_index}: #{reverted_description}"
       else
         puts 'Invalid history version number.'

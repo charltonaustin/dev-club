@@ -4,6 +4,7 @@
 class DefaultTask
   extend T::Sig
   include Action
+
   sig { returns(Integer) }
   attr_accessor :key
 

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 # typed: strict
 
-require_relative './task'
-require_relative './action'
-
 class CreateATask
   extend T::Sig
   include Action
@@ -23,7 +20,7 @@ class CreateATask
     @tasks
   end
 
-  sig { params(description: String).returns(NilClass) }
+  sig { params(description: String).void }
   def add_task(description)
     @tasks << Task.new(description, false, [description])
     puts "Task added: #{description}"
