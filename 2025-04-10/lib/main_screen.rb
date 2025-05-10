@@ -10,6 +10,7 @@ require_relative './tasks/revert_task'
 require_relative './tasks/exit_task'
 require_relative './tasks/wait_on_empty_task'
 require_relative './tasks/action_list'
+require_relative './tasks/delete_a_task'
 
 class MainScreen
   extend T::Sig
