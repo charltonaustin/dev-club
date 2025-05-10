@@ -3,19 +3,18 @@ class TelemetryClient
 
   DIAGNOSTIC_MESSAGE = "AT#UD"
   
-  def initialize
+  def initialize(channel = nil)
     @online_status = false
     @diagnostic_message_just_sent = false
+    @channel = channel
   end
 
-  def connect(telemetry_server_connection_string)
-    if telemetry_server_connection_string.nil? or telemetry_server_connection_string == ""
+  def connect
+    if @channel.nil? or @channel == ""
       raise Exception.new
     end
-
-    success = rand(1..10) <= 2
-
-    @online_status = success
+    
+    @online_status = [true,false].sample
   end
 
   def disconnect
