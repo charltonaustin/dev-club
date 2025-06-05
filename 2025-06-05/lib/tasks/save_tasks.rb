@@ -2,6 +2,7 @@
 # typed: strict
 
 require "sqlite3"
+require "pry"
 
 
 class SaveTasks
@@ -14,6 +15,7 @@ class SaveTasks
     @key = key
     @description = T.let('Save tasks', String)
     @db = T.let(SQLite3::Database.new("./db/tasks.db"), SQLite3::Database)
+    binding.pry
   end
 
   sig { override.returns(T::Array[TaskInterface]) }
@@ -22,7 +24,7 @@ class SaveTasks
     
     @tasks.each_with_index do |task, i|
       # noinspection RubyNilAnalysis
-      @db.execute "insert into task values (?, ?, ?)", [i, task.description, task.completed.to_s]
+      @db.execute "insert into task values (?, ?, ?, ?, ?)", [i, task.name, task.completed.to_s, task.name, task.details]
       task.history.each do |h|
         # noinspection RubyNilAnalysis
         @db.execute "insert into history values (?, ?)", [i, h]
@@ -36,6 +38,7 @@ class SaveTasks
   def description
     @description
   end
+
   sig { override.returns(Integer) }
   def key
     @key

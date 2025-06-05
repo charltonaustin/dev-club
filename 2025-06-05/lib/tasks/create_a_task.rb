@@ -18,20 +18,30 @@ class CreateATask
 
   sig { override.returns(T::Array[TaskInterface]) }
   def do
-    puts 'Enter the task description:'
-    add_task($stdin.gets.chomp)
+    puts 'Enter the task name:'
+    add_name($stdin.gets.chomp)
+    puts 'Enter the task details (optional):'
+    add_details($stdin.gets.chomp)
     @tasks
   end
 
-  sig { params(description: String).returns(NilClass) }
-  def add_task(description)
-    @tasks << Task.new(description, false, [description])
-    puts "Task added: #{description}"
+  sig { params(name: String).returns(NilClass) }
+  def add_name(name)
+    @tasks << Task.new(name, name, false, [name])
+    puts "Task added: #{name}"
   end
+
+  sig { params(details: String).returns(NilClass) }
+  def add_details(details)
+    @tasks.last.details = details
+    puts "Task details added: #{details}"
+  end
+
   sig { override.returns(String) }
   def description
     @description
   end
+
   sig { override.returns(Integer) }
   def key
     @key
