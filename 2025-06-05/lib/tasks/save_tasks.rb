@@ -22,10 +22,10 @@ class SaveTasks
     @tasks.each do |task|
       new_id = @db.execute "select max(id) + 1 from task"
       # noinspection RubyNilAnalysis
-      @db.execute "insert into task (id, description, completed, task_text) values (?, ?, ?, ?)", [new_id, task.description, task.completed.to_s, task.description]
+      @db.execute "insert into task (id, task_text, completed) values (?, ?, ?)", [new_id, task.description, task.completed.to_s]
       task.history.each do |h|
         # noinspection RubyNilAnalysis
-        @db.execute "insert into history (task_id, description, task_text) values (?, ?, ?)", [new_id, h, h]
+        @db.execute "insert into history (task_id, task_text) values (?, ?)", [new_id, h]
       end
     end
     PressToContinue.new.do
