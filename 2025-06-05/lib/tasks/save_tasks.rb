@@ -19,13 +19,18 @@ class SaveTasks
   sig { override.returns(T::Array[TaskInterface]) }
   def do
     puts 'Saving tasks:'
-    
+
+
     @tasks.each_with_index do |task, i|
+      # require 'pry'; binding.pry
       # noinspection RubyNilAnalysis
-      @db.execute "insert into task values (?, ?, ?)", [i, task.description, task.completed.to_s]
+      count = (@db.execute "select count(*) from task").flatten.first
+      # require 'pry'; binding.pry
+      @db.execute "insert into task values (?, ?, ?, ?)", [count + i, task.description, task.completed.to_s, task.task_text]
       task.history.each do |h|
         # noinspection RubyNilAnalysis
-        @db.execute "insert into history values (?, ?)", [i, h]
+        # Todo: Add task_text to history
+        @db.execute "insert into history values (?, ?)", [count + i, h]
       end
     end
     PressToContinue.new.do

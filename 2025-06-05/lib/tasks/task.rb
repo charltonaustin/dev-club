@@ -13,6 +13,10 @@ class Task
     @description = description
   end
 
+  def task_text=(task_text)
+    @task_text = task_text
+  end
+
   sig { override.params(completed: T::Boolean).void}
   def completed=(completed)
     @completed = completed
@@ -25,7 +29,12 @@ class Task
 
   sig { override.returns(String) }
   def description
-    @description
+    @task_text
+  end
+
+  sig { override.returns(String) }
+  def task_text
+    @task_text
   end
 
   sig { override.returns(T::Boolean) }
@@ -43,6 +52,7 @@ class Task
     @description = description
     @completed = completed
     @history = history
+    @task_text = description
   end
 
   sig { override.void }

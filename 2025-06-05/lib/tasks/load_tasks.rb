@@ -30,7 +30,7 @@ class LoadTasks
       end
       @tasks << Task.new(row[1], completed, history)
     end
-    
+
     PressToContinue.new.do
     @tasks
   end
