@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://127.0.0.1:4567/v1/user
+    body:
+      encoding: UTF-8
+      string: '{"family_name":"Last","given_name":"First"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - 127.0.0.1:4567
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '24'
+    body:
+      encoding: UTF-8
+      string: '{"success?":true,"id":1}'
+  recorded_at: Tue, 01 Jul 2025 19:54:27 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:4567/v1/user/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - 127.0.0.1:4567
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '43'
+    body:
+      encoding: UTF-8
+      string: '{"family_name":"Last","given_name":"First"}'
+  recorded_at: Tue, 01 Jul 2025 19:54:27 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:4567/v1/user/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - 127.0.0.1:4567
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '43'
+    body:
+      encoding: UTF-8
+      string: '{"family_name":"Last","given_name":"First"}'
+  recorded_at: Tue, 01 Jul 2025 19:54:27 GMT
+recorded_with: VCR 6.3.1

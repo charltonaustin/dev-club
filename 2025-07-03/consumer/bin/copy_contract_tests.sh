@@ -1,0 +1,1 @@
+cp ./spec/producer_specs/to_share.rb ../producer/spec/shared.rb
