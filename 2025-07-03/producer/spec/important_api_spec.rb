@@ -12,7 +12,7 @@ describe 'GET users' do
     post '/v1/user', user_data.to_json, { 'CONTENT_TYPE' => 'application/json', 'HTTP_HOST' => '127.0.0.1' }
     expect(last_response.status).to eq 200
     get '/v1/user/1', {}, { 'HTTP_HOST' => '127.0.0.1' }
-    expect(last_response.body).to eq('{"family_name":"Doe","given_name":"Jane"}')
+    expect(last_response.body).to eq('{"family_name":"Doe","first_name":"Jane","given_name":"Jane"}')
     expect(last_response.status).to eq 200
   end
 end

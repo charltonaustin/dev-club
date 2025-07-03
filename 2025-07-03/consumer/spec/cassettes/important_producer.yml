@@ -5,7 +5,7 @@ http_interactions:
     uri: http://127.0.0.1:4567/v1/user
     body:
       encoding: UTF-8
-      string: '{"family_name":"Last","given_name":"First"}'
+      string: '{"family_name":"Last","first_name":"First"}'
     headers:
       Content-Type:
       - application/json
@@ -31,7 +31,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"success?":true,"id":1}'
-  recorded_at: Tue, 01 Jul 2025 19:54:27 GMT
+  recorded_at: Thu, 03 Jul 2025 19:38:48 GMT
 - request:
     method: get
     uri: http://127.0.0.1:4567/v1/user/1
@@ -57,11 +57,11 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Length:
-      - '43'
+      - '64'
     body:
       encoding: UTF-8
-      string: '{"family_name":"Last","given_name":"First"}'
-  recorded_at: Tue, 01 Jul 2025 19:54:27 GMT
+      string: '{"family_name":"Last","first_name":"First","given_name":"First"}'
+  recorded_at: Thu, 03 Jul 2025 19:38:48 GMT
 - request:
     method: get
     uri: http://127.0.0.1:4567/v1/user/1
@@ -87,9 +87,9 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Length:
-      - '43'
+      - '64'
     body:
       encoding: UTF-8
-      string: '{"family_name":"Last","given_name":"First"}'
-  recorded_at: Tue, 01 Jul 2025 19:54:27 GMT
+      string: '{"family_name":"Last","first_name":"First","given_name":"First"}'
+  recorded_at: Thu, 03 Jul 2025 19:38:48 GMT
 recorded_with: VCR 6.3.1
