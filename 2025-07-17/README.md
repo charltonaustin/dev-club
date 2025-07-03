@@ -20,18 +20,14 @@ graph TB
     D --> E[Paired Queue]
 
     %% Team 2: Help Processor
-    H --> J[Help Queue]
+    H --> M[Help Queue]
 
     %% Team 3: Status Processor
-    I --> K[Status Queue]
+    I --> M[Status Queue]
 
     %% Team 4: Paired Message Formatter
     E --> L[Paired Message Formatter]
     L --> M[Slack Message Queue]
-
-    %% Help and Status push directly to Slack Message Queue
-    J --> M
-    K --> M
 
     %% Team 5: Slack Messenger
     M --> F[Slack Messenger]
@@ -39,7 +35,7 @@ graph TB
 
     %% Sample Data Flow
     N["📩 Command Examples<br/>• @alice: 'join --no-pair @bob'<br/>• @charlie: 'command:pair'<br/>• @dave: 'help'<br/>• @eve: 'status'"] --> O["🎯 Pairing Data<br/>Team Alpha: alice + frank<br/>Team Beta: charlie + grace<br/>(raw pairing data)"]
-    N --> P["💡 Help Message<br/>📚 Available commands:<br/>• join [--no-pair @user]<br/>• command:pair • help • status<br/>(formatted for Slack)"]
+    N --> P["💡 Help Message<br/>📚 Available commands:<br/>• command:pair • help • status<br/>(formatted for Slack)"]
     N --> Q["📊 Status Message<br/>📈 Current Status:<br/>Active users: 6<br/>Waiting for pairing: Yes<br/>Last session: 2 hours ago<br/>(formatted for Slack)"]
     O --> R["🎯 Formatted Pairing<br/>🎯 Pairing Complete!<br/>Team Alpha: @alice + @frank<br/>Team Beta: @charlie + @grace<br/>(formatted for Slack)"]
 
@@ -312,8 +308,8 @@ Perfect! Now we have a complete **6-team architecture** that properly handles th
 
 ## Timeline
 
-- **30 minutes**: Setup and architecture explanation
+- **15 minutes**: Setup and architecture explanation
 - **60 minutes**: Individual team implementation
-- **45 minutes**: Attempt to run it together and debug what's failing
+- **30 minutes**: Attempt to run it together and debug what's failing
 
 Good luck building your event-driven pairing system! 🚀
