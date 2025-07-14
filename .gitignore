@@ -1,2 +1,5 @@
 .idea
 db
+.terraform
+**/.terraform/**
+.terraform.lock.hcl

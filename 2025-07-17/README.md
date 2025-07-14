@@ -55,6 +55,8 @@ graph TB
 
 ### **Team 0: Command Parser** 🔧
 
+** NOTE **: IT's policy is they can't give a producer from slack. Meaning they can't create us something that will generate a callback when a message is sent.  Therefore, I'll mock this out during dev club.
+
 **Input**: Raw Slack Messages  
 **Output Queue**: Command Queue
 
