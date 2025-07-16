@@ -1,6 +1,5 @@
 import { Kafka, logLevel } from "kafkajs";
 import { generateAuthToken } from "aws-msk-iam-sasl-signer-js";
-import { fromEnv } from "@aws-sdk/credential-providers";
 
 // Kafka configuration
 const kafka = new Kafka({
