@@ -8,6 +8,9 @@ set -e  # Exit on any error
 
 echo "Cleaning up DNS masquerading for Kafka serverless..."
 
+echo "Removing jd"
+brew uninstall jd
+
 # Remove address mapping from dnsmasq config
 echo "Removing address mapping from dnsmasq config..."
 sed -i '' '/address=\/kafka-serverless.us-east-2.amazonaws.com\/127.0.0.1/d' $(brew --prefix)/etc/dnsmasq.conf
