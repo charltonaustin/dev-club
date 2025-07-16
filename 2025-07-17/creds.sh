@@ -13,7 +13,6 @@ TEMP_CREDS=$(aws sts assume-role \
  --role-session-name fresh-kafka-session \
  --profile sandboxplatform)
 
-# Export the credentials as environment variables
 export AWS_SESSION_TOKEN=$(echo $TEMP_CREDS | jq -r '.Credentials.SessionToken')
 export AWS_SECRET_ACCESS_KEY=$(echo $TEMP_CREDS | jq -r '.Credentials.SecretAccessKey')
 export AWS_ACCESS_KEY_ID=$(echo $TEMP_CREDS | jq -r '.Credentials.AccessKeyId')

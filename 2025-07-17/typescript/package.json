@@ -4,10 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx main.ts",
-    "publish": "tsx main.ts",
+    "publish": "tsx producer.ts",
     "consume": "tsx consumer.ts",
-    "producer": "tsx main.ts",
+    "producer": "tsx producer.ts",
     "consumer": "tsx consumer.ts"
   },
   "keywords": [],
