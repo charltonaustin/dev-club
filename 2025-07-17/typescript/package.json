@@ -1,0 +1,28 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx main.ts",
+    "publish": "tsx main.ts",
+    "consume": "tsx consumer.ts",
+    "producer": "tsx main.ts",
+    "consumer": "tsx consumer.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-kafka": "^3.846.0",
+    "@aws-sdk/credential-providers": "^3.846.0",
+    "aws-msk-iam-sasl-signer-js": "^1.0.0",
+    "kafkajs": "^2.2.4"
+  }
+}

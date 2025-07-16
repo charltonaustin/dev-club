@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "AWS region where resources will be created"
   type        = string
-  default     = "us-west-2"
+  default     = "us-east-2"
 }
 
 variable "aws_profile" {
@@ -45,7 +45,6 @@ variable "log_retention_days" {
 variable "public_subnet_id" {
   description = "Public subnet ID where the bastion host will be deployed"
   type        = string
-  default     = "subnet-086ae58369f7e70ff"
 }
 
 variable "key_name" {
