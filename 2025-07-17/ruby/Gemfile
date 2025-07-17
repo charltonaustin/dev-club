@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+
+gem "ruby-kafka"
+gem "aws-sdk-kafka"
+gem "aws-sigv4"
+gem "json"
+gem "rdkafka"
+gem "aws-msk-iam-sasl-signer"

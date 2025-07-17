@@ -1,0 +1,50 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    aws-eventstream (1.4.0)
+    aws-msk-iam-sasl-signer (0.1.1)
+      aws-sdk-kafka
+      thor
+    aws-partitions (1.1129.0)
+    aws-sdk-core (3.226.2)
+      aws-eventstream (~> 1, >= 1.3.0)
+      aws-partitions (~> 1, >= 1.992.0)
+      aws-sigv4 (~> 1.9)
+      base64
+      jmespath (~> 1, >= 1.6.1)
+      logger
+    aws-sdk-kafka (1.92.0)
+      aws-sdk-core (~> 3, >= 3.225.0)
+      aws-sigv4 (~> 1.5)
+    aws-sigv4 (1.12.1)
+      aws-eventstream (~> 1, >= 1.0.2)
+    base64 (0.3.0)
+    digest-crc (0.7.0)
+      rake (>= 12.0.0, < 14.0.0)
+    ffi (1.17.2)
+    jmespath (1.6.2)
+    json (2.6.1)
+    logger (1.7.0)
+    mini_portile2 (2.8.9)
+    rake (13.3.0)
+    rdkafka (0.21.0)
+      ffi (~> 1.15)
+      mini_portile2 (~> 2.6)
+      rake (> 12)
+    ruby-kafka (1.5.0)
+      digest-crc
+    thor (1.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  aws-msk-iam-sasl-signer
+  aws-sdk-kafka
+  aws-sigv4
+  json
+  rdkafka
+  ruby-kafka
+
+BUNDLED WITH
+   2.3.14
