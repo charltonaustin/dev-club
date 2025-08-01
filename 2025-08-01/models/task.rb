@@ -31,7 +31,7 @@ module Models
     end
 
     def to_j
-      { id: @id, name: @name, done: @done }
+      { id: @id, name: @name, completed: @done }
     end
 
     private
