@@ -28,8 +28,8 @@ RSpec.describe Services::Task, :services do
   describe "#get_tasks" do
     let(:tasks) do
       [
-        instance_double(Models::Task, to_j: {completed: true, id: 1}),
-        instance_double(Models::Task, to_j: {completed: false, id: 2})
+        instance_double(Models::Task, to_j: {done: true, id: 1}),
+        instance_double(Models::Task, to_j: {done: false, id: 2})
       ]
     end
 
@@ -37,14 +37,14 @@ RSpec.describe Services::Task, :services do
       allow(Models::Task).to receive(:all).and_return(tasks)
     end
 
-    describe "when status is completed" do
-      it "returns completed tasks" do
-        expect(subject.get_tasks("completed")).to contain_exactly({completed: true, id: 1})
+    describe "when status is done" do
+      it "returns done tasks" do
+        expect(subject.get_tasks("completed")).to contain_exactly({done: true, id: 1})
       end
     end
     describe "when status is incomplete" do
-      it "returns tasks that are not completed" do
-        expect(subject.get_tasks("incomplete")).to contain_exactly({completed: false, id: 2})
+      it "returns tasks that are not done" do
+        expect(subject.get_tasks("incomplete")).to contain_exactly({done: false, id: 2})
       end
     end
   end
@@ -57,13 +57,13 @@ RSpec.describe Services::Task, :services do
 
     it "creates a new task" do
       expect(task_stub).to receive(:save).once
-      subject.create_task({ id: 1, name: "testing", completed: true })
+      subject.create_task({ id: 1, name: "testing", done: true })
     end
   end
 end
 
 def create_task_mock(is_done = false)
-  j_data = { id: 1, name: "name", completed: is_done }
+  j_data = { id: 1, name: "name", done: is_done }
   task = instance_double(Models::Task)
   allow(task).to receive(:to_j).and_return(j_data)
   allow(task).to receive(:save).and_return(1)

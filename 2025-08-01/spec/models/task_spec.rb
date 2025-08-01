@@ -29,8 +29,8 @@ RSpec.describe Models::Task, :models do
       connection.execute("insert into task (name, done) values (?, ?)", ["Name", 1])
     end
 
-    it "has completed true" do
-      expect(described_class.all.first.to_j).to match(completed: true, id: 1, name: "Name")
+    it "has done true" do
+      expect(described_class.all.first.to_j).to match(done: true, id: 1, name: "Name")
     end
   end
 
