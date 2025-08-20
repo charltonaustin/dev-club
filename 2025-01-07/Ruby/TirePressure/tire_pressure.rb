@@ -18,17 +18,28 @@ class Alarm
 
   attr_reader :is_alarm_on
 
-  def initialize
-    @low_pressure_threshold = 17
-    @high_pressure_threshold = 21
-    @sensor = Sensor.new()
+  DEFAULT_LOW_PRESSURE_THRESHOLD = 17
+  DEFAULT_HIGH_PRESSURE_THRESHOLD = 21
+
+  def initialize(sensor: Sensor.new)
+    @sensor = sensor
     @is_alarm_on = false
   end
       
   def check
-    psi_pressure_value = @sensor.pop_next_pressure_psi_value()
-    if psi_pressure_value < @low_pressure_threshold or @high_pressure_threshold < psi_pressure_value
+    psi_pressure_value = @sensor.pop_next_pressure_psi_value
+    if psi_pressure_value < low_pressure_threshold or high_pressure_threshold < psi_pressure_value
       @is_alarm_on = true
     end
+  end
+
+  private
+
+  def low_pressure_threshold
+    DEFAULT_LOW_PRESSURE_THRESHOLD
+  end
+
+  def high_pressure_threshold
+    DEFAULT_HIGH_PRESSURE_THRESHOLD
   end
 end
