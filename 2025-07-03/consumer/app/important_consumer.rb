@@ -1,7 +1,7 @@
 class ImportantConsumer
   def create_user
     uri = URI('http://127.0.0.1:4567/v1/user')
-    body = { family_name: 'Last', given_name: 'First' }
+    body = { family_name: 'Last', first_name: 'First' }
     headers = { 'Content-Type': 'application/json' }
     JSON.parse(Net::HTTP.post(uri, body.to_json, headers).body).transform_keys(&:to_sym)
   end
