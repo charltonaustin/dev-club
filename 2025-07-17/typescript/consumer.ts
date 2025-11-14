@@ -1,5 +1,6 @@
 import { Kafka, logLevel } from "kafkajs";
 import { generateAuthToken } from "aws-msk-iam-sasl-signer-js";
+import { sendSlackMessage } from "./slackMessageService";
 
 // Kafka configuration
 const kafka = new Kafka({
@@ -32,7 +33,7 @@ async function consumeMessages() {
     await consumer.connect();
     console.log("Connected successfully!");
 
-    const topic = "test";
+    const topic = "test2";
     console.log(`Subscribing to topic: ${topic}`);
     await consumer.subscribe({ topic, fromBeginning: true });
 
@@ -57,8 +58,19 @@ async function consumeMessages() {
         // Try to parse JSON if possible
         try {
           const jsonValue = JSON.parse(value);
-          console.log("  Parsed JSON:", JSON.stringify(jsonValue, null, 2));
-        } catch {
+          if (jsonValue.command && jsonValue.command === "help") {
+            const payload = {
+              "text": "📚 **Available Commands:**\n• `join` - Join the pairing session\n `command:pair` - Start the pairing process\n• `help` - Show this help message\n• `status` - Check current session status",
+            };
+            const response = await sendSlackMessage("https://hooks.slack.com/services/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", payload);
+            console.log("  Help message sent to Slack:", response);
+          } else {
+            console.log("  Parsed JSON:", JSON.stringify(jsonValue, null, 2));
+          }
+        } catch(e: unknown) {
+          if (e instanceof Error) {
+            console.error("  Failed to parse JSON:", e.message);
+          }
           // If not JSON, just log as string
           console.log(`  Raw Value: ${value}`);
         }
