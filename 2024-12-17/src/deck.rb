@@ -15,10 +15,10 @@ class Deck
   end
 
   def shuffle_deck
-    @cards.shuffle!
+    cards.shuffle!
   end
 
   def deal_card
-    @cards.pop
+    cards.pop
   end
 end
