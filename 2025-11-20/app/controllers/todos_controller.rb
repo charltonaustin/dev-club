@@ -1,5 +1,8 @@
+require_relative '../lib/services/todo_update_service'
+
 class TodosController < ApplicationController
-  before_action :set_todo, only: %i[ show edit update destroy ]
+  include Wisper::Publisher
+  before_action :set_todo, only: %i[show edit update destroy ]
 
   def index
     @todos = Todo.all
@@ -23,11 +26,9 @@ class TodosController < ApplicationController
   end
 
   def update
-    if @todo.update(todo_params)
-      redirect_to @todo, notice: "Todo was successfully updated.", status: :see_other
-    else
-      render :edit, status: :unprocessable_content
-    end
+    @todo.on(:todo_update_successful) { |todo| TodoUpdateService.new(self).todo_update_successful(todo) }
+    @todo.on(:todo_update_failed) { |_| TodoUpdateService.new(self).todo_update_failed }
+    @todo.update(todo_params)
   end
 
   def destroy
