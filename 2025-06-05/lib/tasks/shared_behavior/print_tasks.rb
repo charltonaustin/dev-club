@@ -17,7 +17,7 @@ class PrintTasks
       puts '--- Your Todo List ---'
       @tasks.each_with_index do |task, index|
         status = task.completed ? '[x]' : '[ ]'
-        puts "#{index + 1}. #{status} #{task.description}"
+        puts "#{index + 1}. #{status} #{task.name}"
       end
       puts '-----------------------'
     end

@@ -28,7 +28,7 @@ class LoadTasks
       if row[1] == 1
         completed = true
       end
-      @tasks << Task.new(row[1], completed, history)
+      @tasks << Task.new(row[1], row[1], completed, history)
     end
     
     PressToContinue.new.do
