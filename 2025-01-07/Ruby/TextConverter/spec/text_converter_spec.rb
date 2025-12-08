@@ -1,10 +1,21 @@
-require_relative '../text_converter'
+require_relative "../text_converter"
 describe UnicodeFileToHtmlTextConverter do
-  context "#foo" do
-    it "executes correctly" do
-      converter = UnicodeFileToHtmlTextConverter.new("foo")
+  context "#full_path_to_file" do
+    it "returns expected value" do
+      path = double("test path")
 
-      expect(converter.full_path_to_file).to eq("foo")
+      converter = described_class.new(path)
+
+      expect(converter.full_path_to_file).to eq(path)
+    end
+  end
+
+  context "#convert_to_html" do
+    it "returns expected value" do
+      # puts Dir.pwd
+      converter = described_class.new("TextConverter/spec/fixture.txt")
+
+      expect(converter.convert_to_html).to eq("&gt;test&lt;<br />")
     end
   end
 end
