@@ -7,15 +7,16 @@ class UnicodeFileToHtmlTextConverter
     @full_path_to_file = full_path_to_file
   end
 
+  # This method does too much
   def convert_to_html
-    f = File.open(@full_path_to_file)
-    html = ""
-    f.each_line do |line|
-      line = line.strip
-      html << CGI.escapeHTML(line)
-      html << "<br />"
-    end
+    File.open(@full_path_to_file).readlines.map do |line|
+      clean_line(line)
+    end.join("")
+  end
 
-    return html
+  private
+
+  def clean_line(line)
+    CGI.escapeHTML(line.strip) + "<br />"
   end
 end
