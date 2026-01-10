@@ -18,4 +18,53 @@ RSpec.describe Models::Task, :models do
     Models::Task.class_variable_set(:@@db, db)
   end
 
+  describe "#to_s" do
+    subject { described_class.new(3, "testing", false) }
+
+    it { expect(subject.to_s).to eq("ID: 3 - testing, false") }
+  end
+
+  describe "#to_j" do
+    before do
+      connection.execute("insert into task (name, done) values (?, ?)", ["Name", 1])
+    end
+
+    it "has done true" do
+      expect(described_class.all.first.to_j).to match(done: true, id: 1, name: "Name")
+    end
+  end
+
+  describe "#save" do
+    context "when the id is nil" do
+      context "when complete" do
+        subject { described_class.new(nil, "other", true) }
+
+        it "saves" do
+          expect(subject.save).to eq(1)
+          result = connection.execute("SELECT * FROM task where id = 1")
+          expect(result).to contain_exactly([1, "other", 1])
+        end
+      end
+
+      context "when not complete" do
+        subject { described_class.new(nil, "other", false) }
+
+        it "saves" do
+          expect(subject.save).to eq(1)
+          result = connection.execute("SELECT * FROM task where id = 1")
+          expect(result).to contain_exactly([1, "other", 0])
+        end
+      end
+    end
+
+    context "when the id is not nil" do
+      subject { described_class.new(1, "other", true) }
+
+      it "saves" do
+        expect(subject.save).to eq(1)
+        result = connection.execute("SELECT count(*) FROM task")
+        expect(result).to contain_exactly([0])
+      end
+    end
+  end
 end
