@@ -25,7 +25,7 @@ describe PolicyNumber do
       let(:rows) { basic_numbers }
 
       it {
-        expect(subject.digits).to eq [
+        expect(subject.digit_values).to eq [
           Constants::DIGITS[1],
           Constants::DIGITS[2],
           Constants::DIGITS[3],
@@ -42,7 +42,7 @@ describe PolicyNumber do
     context "all zeros" do
       let(:rows) { all_zeros }
 
-      it { expect(subject.digits).to eq [
+      it { expect(subject.digit_values).to eq [
         Constants::DIGITS[0],
         Constants::DIGITS[0],
         Constants::DIGITS[0],
