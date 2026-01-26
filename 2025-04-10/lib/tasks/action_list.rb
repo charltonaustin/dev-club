@@ -11,14 +11,16 @@ class ActionList
 
   sig { returns(T::Array[Action]) }
   def get_actions
-    actions = T.let([CreateATask, ListTasks, ExitTask].map.with_index do |action, i|
+    actions = T.let([CreateATask, ListTasks].map.with_index do |action, i|
       action.new(@tasks, i + 1)
     end, T::Array[Action])
 
-    other = T.let([EditTask, ViewTaskHistory, RevertTask].map.with_index do |action, i|
+    other = T.let([EditTask, CompleteTask, DeleteTask, ViewTaskHistory, RevertTask, ClearList].map.with_index do |action, i|
       a = WaitOnEmptyTask.new(@tasks, actions.length + i + 1)
       a.set_delegator(action.new(@tasks, actions.length + i + 1))
     end, T::Array[Action])
-    actions + other
+
+    actions_list = actions + other
+    actions_list << Exit.new(actions_list.length + 1)
   end
 end

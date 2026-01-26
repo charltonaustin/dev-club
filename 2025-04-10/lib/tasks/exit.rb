@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 # typed: strict
 
-class ExitTask
+class Exit
   extend T::Sig
   include Action
 
-  sig { params(tasks: T::Array[Task], key: Integer).void }
-  def initialize(tasks, key)
-    @tasks = tasks
+  sig { override.params(key: Integer).void }
+  def initialize(key)
     @description = T.let('Exit', String)
     @key = key
   end
@@ -17,10 +16,12 @@ class ExitTask
     puts 'Exiting todo app. Goodbye!'
     exit(0)
   end
+
   sig { override.returns(String) }
   def description
     @description
   end
+
   sig { override.returns(Integer) }
   def key
     @key

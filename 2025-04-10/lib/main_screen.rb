@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 # typed: strict
 
-require_relative './tasks/create_a_task'
-require_relative './tasks/list_tasks'
-require_relative './tasks/edit_task'
-require_relative './tasks/view_task_history'
-require_relative './tasks/default_task'
-require_relative './tasks/revert_task'
-require_relative './tasks/exit_task'
+require_relative './tasks/task'
+require_relative './tasks/action'
 require_relative './tasks/wait_on_empty_task'
+require_relative './tasks/default_task'
 require_relative './tasks/action_list'
+require_relative './tasks/exit'
+
+require_relative './actions/create_a_task'
+require_relative './actions/clear_list'
+require_relative './actions/list_tasks'
+require_relative './actions/edit_task'
+require_relative './actions/complete_task'
+require_relative './actions/delete_task'
+require_relative './actions/view_task_history'
+require_relative './actions/revert_task'
 
 class MainScreen
   extend T::Sig

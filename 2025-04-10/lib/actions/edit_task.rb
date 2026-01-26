@@ -22,7 +22,7 @@ class EditTask
     @tasks
   end
 
-  sig { params(task_index: T.untyped, new_description: T.untyped).returns(NilClass) }
+  sig { params(task_index: Integer, new_description: String).void }
   def edit_task(task_index, new_description)
     if task_index >= 1 && task_index <= @tasks.length
       task = @tasks[task_index - 1]
@@ -33,10 +33,12 @@ class EditTask
       puts 'Invalid task number.'
     end
   end
+
   sig { override.returns(String) }
   def description
     @description
   end
+
   sig { override.returns(Integer) }
   def key
     @key

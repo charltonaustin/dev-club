@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 # typed: strict
 
-require_relative './shared_behavior/task_index_getter'
-require_relative './shared_behavior/print_tasks'
+require_relative '../tasks/shared_behavior/task_index_getter'
+require_relative '../tasks/shared_behavior/print_tasks'
 
 class ViewTaskHistory
   extend T::Sig

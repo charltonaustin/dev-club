@@ -9,7 +9,7 @@ class WaitOnEmptyTask
   def key
     @key
   end
-  
+
   sig { params(tasks: T::Array[Task], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks

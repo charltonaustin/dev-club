@@ -8,8 +8,10 @@ class Task
 
   sig { returns(String) }
   attr_accessor :description
+
   sig { returns(T::Boolean) }
   attr_accessor :completed
+
   sig { returns(T::Array[String]) }
   attr_accessor :history
 

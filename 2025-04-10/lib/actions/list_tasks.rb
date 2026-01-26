@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 # typed: strict
 
-require_relative './shared_behavior/print_tasks'
-require_relative './shared_behavior/press_to_continue'
+require_relative '../tasks/shared_behavior/print_tasks'
+require_relative '../tasks/shared_behavior/press_to_continue'
 
 class ListTasks
   extend T::Sig
